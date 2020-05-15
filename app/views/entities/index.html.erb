@@ -1,0 +1,6 @@
+<h1>Entities</h1>
+<ul>
+  <% @entities.each do |entity| %>
+    <li><%= link_to entity.legal_name, entity_path(entity) %></li>
+    <% end %>
+</ul>
