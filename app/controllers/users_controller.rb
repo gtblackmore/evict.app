@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :authentication_required, only: [:show, :edit, :update, :destroy]
 
   def index
     @users = User.all

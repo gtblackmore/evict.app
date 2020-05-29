@@ -1,5 +1,6 @@
 class PropertiesController < ApplicationController
-
+  before_action :authentication_required
+  
   def index
     @properties = Property.all
   end

@@ -1,4 +1,5 @@
 class TenantsController < ApplicationController
+  before_action :authentication_required
 
   def index
     @tenants = Tenant.all
