@@ -3,7 +3,7 @@
 <%= @user.email %>
 
 
-<% @user.properties.each do |property| %>
+
 <table>    
   <tr>
     <th>Address</th>
@@ -13,6 +13,7 @@
     <th>County</th>
     <th>Rent</th>   
   </tr>
+  <% @user.properties.each do |property| %> 
   <tr>
     <td><%= property.address %></td>
     <td><%= property.city %></td>
@@ -20,6 +21,6 @@
     <td><%= property.zip %></td>
     <td><%= property.county %></td>
     <td>$<%= property.rent %></td>
+  <% end %>
   </tr>
 </table>
-<% end %>
