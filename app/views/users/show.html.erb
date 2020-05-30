@@ -1,5 +1,25 @@
 <h1><%= @user.first_name %> <%= @user.last_name %></h1>
 
 <%= @user.email %>
-<%= @user.password_digest %>
 
+
+<% @user.properties.each do |property| %>
+<table>    
+  <tr>
+    <th>Address</th>
+    <th>City</th>
+    <th>State</th>
+    <th>Zip</th>
+    <th>County</th>
+    <th>Rent</th>   
+  </tr>
+  <tr>
+    <td><%= property.address %></td>
+    <td><%= property.city %></td>
+    <td><%= property.state %></td>
+    <td><%= property.zip %></td>
+    <td><%= property.county %></td>
+    <td>$<%= property.rent %></td>
+  </tr>
+</table>
+<% end %>
