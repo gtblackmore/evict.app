@@ -6,8 +6,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = @current_user
-    @properties = @user.properties
+  
+    
   end
 
   def new
