@@ -5,3 +5,6 @@
 <%= @tenant.outstanding_balance %>
 <%= @tenant.past_due %>
 <%= @tenant.property_id %>
+
+<%= button_to "Delete Tenant", tenant_path(@tenant), method: :delete %>
+<button class="crud"><%= link_to "Edit Tenant", edit_tenant_path(@tenant) %></button>

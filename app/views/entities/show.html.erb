@@ -9,3 +9,6 @@
   <%= @entity.email %>
   <%= @entity.user_id %>
 </ul>
+
+<%= button_to "Delete Entity", entity_path(@entity), method: :delete %>
+<button class="crud"><%= link_to "Edit Entity", edit_entity_path(@entity) %></button>

@@ -42,6 +42,7 @@ class PropertiesController < ApplicationController
     @property = Property.find(params[:id])
     @property.destroy
     flash[:notice] = "Property Deleted"
+    redirect_to user_path(@current_user)
   end
 
   private

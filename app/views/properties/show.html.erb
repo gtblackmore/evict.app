@@ -4,3 +4,5 @@
   <p>Owner: <%= @property.entity_id %></p>
   <p>Tenants</p>
     
+  <%= button_to "Delete Property", property_path(@property), method: :delete %>
+  <button class="crud"><%= link_to "Edit Property", edit_property_path(@property) %></button>

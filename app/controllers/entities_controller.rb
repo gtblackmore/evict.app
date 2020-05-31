@@ -42,6 +42,7 @@ class EntitiesController < ApplicationController
     @entity = Entity.find(params[:id])
     @entity.destroy
     flash[:notice] = "Entity Deleted"
+    redirect_to user_path(@current_user)
   end
 
   private
