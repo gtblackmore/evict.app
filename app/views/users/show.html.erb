@@ -1,26 +1,24 @@
 <h1><%= @current_user.first_name %> <%= @current_user.last_name %></h1>
 
-<%= @current_user.email %>
-
+<p>You are: <%= @current_user.email %></p>
+<div class="container">
+  <%= link_to "Add New Property", new_property_path %>
+  <%= link_to "Add New Entity", new_entity_path %>
+  <%= link_to "Add New Tenant", new_tenant_path %>
+</div>
 
 
 <table>    
   <tr>
-    <th>Address</th>
-    <th>City</th>
-    <th>State</th>
-    <th>Zip</th>
-    <th>County</th>
-    <th>Rent</th>   
+    <th>Property</th>
+   
   </tr>
-  <% @current_user.properties.each do |property| %> 
+  <% @current_user.properties.each do |property| %>  
   <tr>
-    <td><%= property.address %></td>
-    <td><%= property.city %></td>
-    <td><%= property.state %></td>
-    <td><%= property.zip %></td>
-    <td><%= property.county %></td>
-    <td>$<%= property.rent %></td>
+    <td class="row"><%= property.address %>, <%= property.city %>, <%= property.state %>, <%= property.zip %></td>
+    <td><button><%= link_to "Evict Tenants", user_path(current_user) %></button></td>
+    <td><button><%= link_to "Edit Property", edit_property_path(property) %></button></td>
+    <td><button><%= link_to "Property Details", property_path(property) %></button></td>
   <% end %>
   </tr>
 </table>
