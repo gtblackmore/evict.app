@@ -1,27 +1,2 @@
 <h1>Editing <%= @property.address %></h1>
-
-<%= form_for @property do |f| %>
-  <%= f.label :address %>
-  <%= f.text_field :address %>
-  
-  <%= f.label :city %>
-  <%= f.text_field :city %>
-  
-  <%= f.label :state %>
-  <%= f.text_field :state %>
-  
-  <%= f.label :zip %>
-  <%= f.text_field :zip %>
-  
-  <%= f.label :county %>
-  <%= f.text_field :county %>
-  
-  <%= f.label :rent %>
-  <%= f.text_field :rent %>
-  
-  <%= f.label :entity_id %>
-  <%= f.text_field :entity_id %>
-   
-  <%= f.submit %>
-
-<% end %>
+<%= render 'form' %>

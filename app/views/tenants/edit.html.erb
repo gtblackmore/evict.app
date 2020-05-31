@@ -1,28 +1,2 @@
 <h1>Editing <%= @tenant.first_name %> <%= @tenant.last_name %></h1>
-
-<%= form_for @tenant do |f| %>
-  <%= f.label :first_name %>
-  <%= f.text_field :first_name %>
-  
-  <%= f.label :last_name %>
-  <%= f.text_field :last_name %>
-  
-  <%= f.label :email %>
-  <%= f.text_field :email %>
-  
-  <%= f.label :phone %>
-  <%= f.text_field :phone %>
-  
-  <%= f.label :outstanding_balance %>
-  <%= f.text_field :outstanding_balance %>
-  
-  <%= f.label :past_due %>
-  <%= f.text_field :past_due %>
-  
-  <%= f.label :property_id %>
-  <%= f.text_field :property_id %>
-  
-   
-  <%= f.submit %>
-
-<% end %>
+<%= render 'form' %>
