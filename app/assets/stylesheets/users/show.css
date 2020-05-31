@@ -1,5 +1,6 @@
 table {
-  width: 50%;
+  width: 100%;
+  border-bottom: 1px solid black;
   
 }
 
@@ -9,8 +10,52 @@ tr:hover {
 }
 
 th, .row {
-  border-bottom: 1px solid black;
+  border-top: 1px solid black;
   text-align: justify;
   padding: 0.75rem;
 }
 
+.container {
+  width: 35%;
+  
+
+}
+
+.evict {
+  background-color: red;
+  color: white;
+  
+}
+
+a:link {
+  text-decoration: none;
+  color: black;
+}
+
+a:visited {
+  text-decoration: none;
+  color: black;
+}
+.buttons-row {
+  float: right;
+}
+
+.delinquent {
+  color: red;
+  font-size: 16pt;
+  font-weight: bold;  
+}
+
+.entity_container {
+  
+ 
+}
+
+.prop_container {
+ 
+
+}
+
+.prop_header, .entity_header {
+  padding: 0 .75rem .75rem;
+}

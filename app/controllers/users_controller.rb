@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    
+    @delinquent_tenants = @current_user.tenants.where(past_due: true)
     
   end
 

@@ -1,24 +1,50 @@
 <h1><%= @current_user.first_name %> <%= @current_user.last_name %></h1>
 
-<p>You are: <%= @current_user.email %></p>
-<div class="container">
-  <%= link_to "Add New Property", new_property_path %>
-  <%= link_to "Add New Entity", new_entity_path %>
-  <%= link_to "Add New Tenant", new_tenant_path %>
-</div>
+<p>You have <span class="delinquent"><%= @delinquent_tenants.count %></span> tenants that are delinquent. They are:</p>
+<% @delinquent_tenants.each do |tenant| %>
+<ul>
+  <li><%= tenant.first_name %> <%= tenant.last_name %></li>
+</ul>
+<% end %>
 
 
-<table>    
-  <tr>
-    <th>Property</th>
-   
-  </tr>
-  <% @current_user.properties.each do |property| %>  
-  <tr>
-    <td class="row"><%= property.address %>, <%= property.city %>, <%= property.state %>, <%= property.zip %></td>
-    <td><button><%= link_to "Evict Tenants", user_path(current_user) %></button></td>
-    <td><button><%= link_to "Edit Property", edit_property_path(property) %></button></td>
-    <td><button><%= link_to "Property Details", property_path(property) %></button></td>
-  <% end %>
-  </tr>
-</table>
+<section class="container">
+  <div class="prop_container">
+    <div class="prop_header">
+      <h3>Properties</h3>
+      <button class="crud"><%= link_to "Add New Property", new_property_path %></button>
+      <button class="crud"><%= link_to "Add New Tenant", new_tenant_path %></button>
+    </div>
+    <table>    
+    
+    <% @current_user.properties.each do |property| %>  
+      <tr>
+        <td class="row"><%= property.address %>, <%= property.city %>, <%= property.state %>, <%= property.zip %>
+          <span class="buttons-row">
+            <button class="evict"><%= link_to "Start Eviction", user_path(current_user) %></button>
+            <button class="crud"><%= link_to "Edit Property", edit_property_path(property) %></button>
+            <button class="crud"><%= link_to "Property Details", property_path(property) %></button></td>
+         </span>
+    <% end %>
+      </tr>
+    </table>
+  </div>
+
+  <div class="entity_container">
+    <div class="entity_header">
+      <h3>Entities</h3>
+      <button class="crud"><%= link_to "Add New Entity", new_entity_path %></button>
+    </div>
+    <table>    
+    <% @current_user.entities.each do |entity| %>  
+      <tr>
+        <td class="row"><%= entity.legal_name %>
+          <span class="buttons-row">
+            <button class="crud"><%= link_to "Edit Entity", edit_entity_path(entity) %></button>
+            <button class="crud"><%= link_to "Entity Details", entity_path(entity) %></button></td>
+         </span>
+    <% end %>
+      </tr>
+    </table>
+  </div>
+</section>
