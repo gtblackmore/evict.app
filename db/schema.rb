@@ -21,10 +21,9 @@ ActiveRecord::Schema.define(version: 2020_05_14_205234) do
     t.string "entity_type"
     t.string "phone"
     t.string "email"
-    t.integer "user_id", null: false
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_entities_on_user_id"
   end
 
   create_table "properties", force: :cascade do |t|
@@ -34,10 +33,9 @@ ActiveRecord::Schema.define(version: 2020_05_14_205234) do
     t.string "zip"
     t.string "county"
     t.integer "rent"
-    t.integer "entity_id", null: false
+    t.integer "entity_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["entity_id"], name: "index_properties_on_entity_id"
   end
 
   create_table "tenants", force: :cascade do |t|
@@ -47,10 +45,9 @@ ActiveRecord::Schema.define(version: 2020_05_14_205234) do
     t.string "phone"
     t.boolean "past_due"
     t.integer "outstanding_balance"
-    t.integer "property_id", null: false
+    t.integer "property_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["property_id"], name: "index_tenants_on_property_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -62,7 +59,4 @@ ActiveRecord::Schema.define(version: 2020_05_14_205234) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "entities", "users"
-  add_foreign_key "properties", "entities"
-  add_foreign_key "tenants", "properties"
 end

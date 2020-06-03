@@ -9,7 +9,7 @@ class CreateEntities < ActiveRecord::Migration[6.0]
       t.string :entity_type
       t.string :phone
       t.string :email
-      t.belongs_to :user, null: false, foreign_key: true
+      t.integer :user_id
 
       t.timestamps
     end

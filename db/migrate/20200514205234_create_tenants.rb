@@ -7,7 +7,7 @@ class CreateTenants < ActiveRecord::Migration[6.0]
       t.string :phone
       t.boolean :past_due
       t.integer :outstanding_balance
-      t.belongs_to :property, null: false, foreign_key: true
+      t.integer :property_id
 
       t.timestamps
     end
