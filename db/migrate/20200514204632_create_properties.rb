@@ -7,7 +7,7 @@ class CreateProperties < ActiveRecord::Migration[6.0]
       t.string :zip
       t.string :county
       t.integer :rent
-      t.integer :entity_id
+      t.belongs_to :entity
       t.timestamps
     end
   end

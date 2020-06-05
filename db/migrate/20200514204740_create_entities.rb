@@ -9,7 +9,7 @@ class CreateEntities < ActiveRecord::Migration[6.0]
       t.string :entity_type
       t.string :phone
       t.string :email
-      t.integer :user_id
+      t.belongs_to :user
 
       t.timestamps
     end
