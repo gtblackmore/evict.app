@@ -2,7 +2,8 @@ class PropertiesController < ApplicationController
   before_action :authentication_required
   
   def index
-    @properties = Property.all
+    @entity = Entity.find(params[:entity_id])
+    @properties = @entity.properties
   end
 
   def show
@@ -10,7 +11,8 @@ class PropertiesController < ApplicationController
   end
 
   def new
-    @property = Property.new
+    @entity = Entity.find(params[:entity_id])
+    @property = @entity.properties.new
   end
 
   def create

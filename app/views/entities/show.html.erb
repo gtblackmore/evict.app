@@ -12,3 +12,4 @@
 
 <%= button_to "Delete Entity", entity_path(@entity), method: :delete %>
 <button class="crud"><%= link_to "Edit Entity", edit_entity_path(@entity) %></button>
+<button class="crud"><%= link_to "Add Property", new_entity_property_path(@entity) %></button>

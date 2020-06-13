@@ -13,7 +13,7 @@
     <div class="prop_header">
       <h3>Properties</h3>
       <button class="crud"><%= link_to "Add New Property", new_property_path %></button>
-      <button class="crud"><%= link_to "Add New Tenant", new_tenant_path %></button>
+      <button class="crud"><%= link_to "Add New Tenant", tenant_path %></button>
     </div>
     <table>    
     
@@ -33,7 +33,7 @@
   <div class="entity_container">
     <div class="entity_header">
       <h3>Entities</h3>
-      <button class="crud"><%= link_to "Add New Entity", new_entity_path %></button>
+      <button class="crud"><%= link_to "Add New Entity", new_user_entity_path(@current_user.id) %></button>
     </div>
     <table>    
     <% @current_user.entities.each do |entity| %>  

@@ -1,4 +1,4 @@
-<%= form_for @tenant do |f| %>
+<%= form_with model: [@property, @tenant] do |f| %>
 <%= f.label :first_name %>
 <%= f.text_field :first_name %>
 

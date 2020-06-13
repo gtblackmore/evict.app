@@ -2,7 +2,8 @@ class TenantsController < ApplicationController
   before_action :authentication_required
 
   def index
-    @tenants = Tenant.all
+    @property = Property.find(params[:property_id])
+    @tenants = @property.tenants
   end
 
   def show
@@ -10,7 +11,10 @@ class TenantsController < ApplicationController
   end
 
   def new
-    @tenant = Tenant.new
+    @property = Property.find(params[:property_id])
+    @tenant = @property.tenants.new
+    
+    
   end
 
   def create

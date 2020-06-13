@@ -6,3 +6,4 @@
     
   <%= button_to "Delete Property", property_path(@property), method: :delete %>
   <button class="crud"><%= link_to "Edit Property", edit_property_path(@property) %></button>
+  <button class="crud"><%= link_to "Add Tenant", new_property_tenant_path(@property) %></button>

@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  resources :users, :properties, :tenants, :entities
-  
+  resources :users do
+    resources :entities, shallow: true
+  end
+  resources :properties do
+    resources :tenants, shallow: true
+  end
+
+  resources :entities do
+    resources :properties, shallow: true
+  end 
 
   get '/login', to: 'sessions#new'
   post '/sessions', to: 'sessions#create'
