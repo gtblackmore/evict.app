@@ -2,15 +2,16 @@ class EntitiesController < ApplicationController
   before_action :authentication_required
 
   def index
-    @entities = Entity.all
+    @entities = @current_user.entities
   end
 
   def show
-    @entity = Entity.find(params[:id])
+    @entity = @current_user.entities.find(params[:id])
   end
 
   def new
-    @entity = Entity.new
+    @user = @current_user
+    @entity = @user.entities.new
   end
 
   def create
