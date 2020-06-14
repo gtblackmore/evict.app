@@ -1,31 +1,40 @@
-<%= form_for @entity do |f| %>
-  <%= f.label :legal_name %>
-  <%= f.text_field :legal_name %>
+<%= form_with(model: [@user, @entity], local: true) do |f| %>
+  <% if @entity.errors.any? %>
+  <div id="error_explanation">
+     <h2>There were some errors:</h2>
+     <ul>
+      <% @entity.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+  </div>
+<% end %>
+<%= f.label :legal_name %>
+<%= f.text_field :legal_name %>
   
-  <%= f.label :address %>
-  <%= f.text_field :address %>
+<%= f.label :address %>
+<%= f.text_field :address %>
+ 
+<%= f.label :city %>
+<%= f.text_field :city %>
   
-  <%= f.label :city %>
-  <%= f.text_field :city %>
-  
-  <%= f.label :state %>
-  <%= f.text_field :state %>
-  
-  <%= f.label :zip %>
-  <%= f.text_field :zip %>
+<%= f.label :state %>
+<%= f.text_field :state %>
+ 
+<%= f.label :zip %>
+<%= f.text_field :zip %>
 
-  <%= f.label :entity_type %>
-  <%= f.text_field :entity_type %>
+<%= f.label :entity_type %>
+<%= f.text_field :entity_type %>
   
-  <%= f.label :phone %>
-  <%= f.text_field :phone %>
+<%= f.label :phone %>
+<%= f.text_field :phone %>
   
-  <%= f.label :email %>
-  <%= f.text_field :email %>
+<%= f.label :email %>
+<%= f.text_field :email %>
   
-  <%= f.label :user_id %>
-  <%= f.text_field :user_id %>
+<%= f.hidden_field :user_id, value: params[:user_id] %>
   
-  <%= f.submit %>
+<%= f.submit %>
 
 <% end %>

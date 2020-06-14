@@ -1,2 +1,2 @@
 <h1>Editing <%= @tenant.first_name %> <%= @tenant.last_name %></h1>
-<%= render 'form' %>
+<%= render 'form', locals: { model: [@property, @tenant] }%>

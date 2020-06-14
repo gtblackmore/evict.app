@@ -5,12 +5,9 @@ Rails.application.routes.draw do
   end
   resources :properties do
     resources :tenants, shallow: true
-  end
-
-  resources :entities do
-    resources :properties, shallow: true
   end 
 
+  
   get '/login', to: 'sessions#new'
   post '/sessions', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'

@@ -15,7 +15,8 @@ class EntitiesController < ApplicationController
   end
 
   def create
-    @entity = Entity.new(entity_params)
+    @user = @current_user
+    @entity = @user.entities.new(entity_params)
 
     if @entity.save
       redirect_to entity_path(@entity)

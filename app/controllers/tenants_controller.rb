@@ -12,14 +12,15 @@ class TenantsController < ApplicationController
 
   def new
     @property = Property.find(params[:property_id])
-    @tenant = @property.tenants.new
+    @tenant = Tenant.new
     
     
   end
 
   def create
+    @property = Property.find(params[:property_id])
     @tenant = Tenant.new(tenant_params)
-
+    
     if @tenant.save
       redirect_to tenant_path(@tenant)
     else

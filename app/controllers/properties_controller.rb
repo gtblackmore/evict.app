@@ -11,13 +11,14 @@ class PropertiesController < ApplicationController
   end
 
   def new
-    @entity = Entity.find(params[:entity_id])
-    @property = @entity.properties.new
+    @property = Property.new
+    @entities = @current_user.entities
   end
 
   def create
+    @entities = @current_user.entities
     @property = Property.new(property_params)
-    
+
     if @property.save
       redirect_to property_path(@property)
     else
@@ -27,6 +28,7 @@ class PropertiesController < ApplicationController
 
   def edit
     @property = Property.find(params[:id])
+    @entities = @current_user.entities
   end
 
   def update

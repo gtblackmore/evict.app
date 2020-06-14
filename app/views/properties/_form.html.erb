@@ -1,4 +1,14 @@
-<%= form_with model: [@entity, @property] do |f| %>
+<%= form_with model: @property, local: true do |f| %>
+  <% if @property.errors.any? %>
+  <div id="error_explanation">
+     <h2>There were some errors:</h2>
+     <ul>
+      <% @property.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+  </div>
+  <% end %>
 <%= f.label :address %>
 <%= f.text_field :address %>
 
@@ -17,9 +27,10 @@
 <%= f.label :rent %>
 <%= f.text_field :rent %>
 
-<%= f.label :entity_id %>
-<%= f.text_field :entity_id %>
- 
+<%= f.label :Owner %>
+<%= collection_select(:property, :entity_id, @entities, :id, :legal_name) %>
+
+
 <%= f.submit %>
 
 <% end %>
