@@ -1,5 +1,5 @@
 class Property < ApplicationRecord
-  belongs_to :entity
+  belongs_to :user
   has_many :tenants, dependent: :destroy
   validates :address, :city, :state, :zip, :county, presence: true
  
