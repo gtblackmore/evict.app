@@ -1,13 +1,9 @@
 class UsersController < ApplicationController
-  before_action :authentication_required, only: [:show, :edit, :update, :destroy]
-
-  def index
-    @users = User.all
-  end
+  before_action :authentication_required, only: [:show, :edit, :update, :destroy] 
+  before_action :find_user, only: [:show, :edit, :update, :destroy]
 
   def show
-    @delinquent_tenants = @current_user.tenants.where(past_due: true)
-    
+  
   end
 
   def new
@@ -25,11 +21,10 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+
   end
 
   def update
-    @user = User.find(params[:id])
     @user.update(user_params)
 
     if @user.save
@@ -40,14 +35,19 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:id])
     @user.destroy
+    session.delete :user_id
+    redirect_to '/'
   end
 
   private
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :password)
+  end
+
+  def find_user
+    @user = current_user
   end
 end
 

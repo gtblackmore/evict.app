@@ -1,0 +1,39 @@
+<%= form_with model: @attorney, local: true do |f| %>
+  <% if @attorney.errors.any? %>
+  <div id="error_explanation">
+     <h2>There were some errors:</h2>
+     <ul>
+      <% @attorney.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+  </div>
+  <% end %>
+<%= f.label :first_name %>
+<%= f.text_field :first_name %>
+
+<%= f.label :last_name %>
+<%= f.text_field :last_name %>
+
+<%= f.label :email %>
+<%= f.text_field :email %>
+
+<%= f.label :phone %>
+<%= f.text_field :phone %>
+
+<%= f.label :firm %>
+<%= f.text_field :firm %>
+
+<%= f.label :fee %>
+<%= f.text_field :fee %>
+
+
+<%= f.submit %>
+
+<% end %>
+
+
+
+
+
+

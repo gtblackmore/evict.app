@@ -1,0 +1,19 @@
+<h1>Your Evictions</h1>
+
+<section class="container">
+  <table>    
+   
+    <% @evictions.each do |eviction| %>  
+      <tr>
+        <td class="row"><%= eviction.property.mailing_address %> - $<%= eviction.property.total_owed %>
+          <span class="buttons-row">
+            
+            <button class="crud"><%= link_to "Update Eviction",  edit_eviction_path(eviction) %></button>
+            <button class="crud"><%= link_to "Eviction Details", eviction_path(eviction) %></button>
+            <%= button_to "Cancel Eviction", eviction_path(eviction), method: :delete %>
+          </span>
+        </td>
+    <% end %>
+      </tr>
+    </table>
+  </div>

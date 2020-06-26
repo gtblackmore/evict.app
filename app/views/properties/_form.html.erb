@@ -27,9 +27,8 @@
 <%= f.label :rent %>
 <%= f.text_field :rent %>
 
-<%= f.label :Owner %>
-<%= collection_select(:property, :entity_id, @entities, :id, :legal_name) %>
-
+<%= f.label :Landlord %>
+<%= f.text_field :landlord %>
 
 <%= f.submit %>
 

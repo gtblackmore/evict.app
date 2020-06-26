@@ -1,9 +1,20 @@
-<h1><%= @property.address %>, <%= @property.city %>, <%= @property.state %> <%= @property.zip %></h1>
+<h1><%= @property.mailing_address %></h1>
 
   <p>Rent: <%= @property.rent %></p>
-  <p>Owner: <%= @property.entity_id %></p>
+  <p>Landlord: <%= @property.landlord %></p>
+  <p>Total Owed: $<%= @property.total_owed %></p>
   <p>Tenants</p>
+  <% @property.tenants.each do |tenant| %>
+  <ul>
+    <li><%= link_to tenant.full_name, property_tenant_path(@property, tenant) %></li>
+ 
+  </ul>
+  <% end %>
+
     
   <%= button_to "Delete Property", property_path(@property), method: :delete %>
   <button class="crud"><%= link_to "Edit Property", edit_property_path(@property) %></button>
   <button class="crud"><%= link_to "Add Tenant", new_property_tenant_path(@property) %></button>
+  <button class="evict"><%= link_to "Start Eviction", new_eviction_path %></button>
+  <button><%= link_to "See Pending Evictions", evictions_path %></button>
+  

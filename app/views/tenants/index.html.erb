@@ -1,6 +1,6 @@
 <h1>Tenants</h1>
 <ul>
   <% @tenants.each do |tenant| %>
-    <li><%= link_to tenant.first_name, tenant_path(tenant) %> <%= link_to tenant.last_name, tenant_path(tenant) %></li>
+    <li><%= link_to tenant.full_name, property_tenant_path(tenant.property_id, tenant) %></li>
     <% end %>
 </ul>
