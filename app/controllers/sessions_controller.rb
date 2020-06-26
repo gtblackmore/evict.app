@@ -3,28 +3,24 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if auth_hash = request.env["omniauth.auth"]
-      oauth_email = request.env["omniauth.auth"]["info"]["email"]
-      if user = User.find_by(email: oauth_email)
-        session[:user_id] = user.id
-        redirect_to user_path(user)
-      else 
-        user = User.new(email: oauth_email, password: SecureRandom.hex)
-        if user.save
+    if request.env["omniauth.auth"] != nil
+      auth = request.env["omniauth.auth"]["info"]  
+      user = User.find_or_create_by_omniauth(auth)
+      session[:user_id] = user.id
+
+      redirect_to home_path
+    elsif
+      if user = User.find_by(email: params[:email])
+        if user && user.authenticate(params[:password])
           session[:user_id] = user.id
           redirect_to user_path(user)
         else
-          raise user.errors.full_messages
+          render :new
         end
       end
     else
-      user = User.find_by(email: params[:email])
-      if user && user.authenticate(params[:password])
-        session[:user_id] = user.id
-        redirect_to user_path(user)
-      else
-        redirect_to login_path
-      end
+      flash.alert = "Invalid email or password"
+      render :new
     end
   end
 
@@ -32,4 +28,5 @@ class SessionsController < ApplicationController
     session.delete :user_id
     redirect_to "/login"
   end
+
 end

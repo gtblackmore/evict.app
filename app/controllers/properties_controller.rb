@@ -1,23 +1,19 @@
 class PropertiesController < ApplicationController
-  before_action :authentication_required
+  before_action :authentication_required, :find_property, only: [:show, :edit, :update, :destroy]
+
   
   def index
-    @entity = Entity.find(params[:entity_id])
-    @properties = @entity.properties
   end
 
   def show
-    @property = Property.find(params[:id])
   end
 
   def new
-    @property = Property.new
-    @entities = @current_user.entities
+    @property = current_user.properties.build
   end
 
   def create
-    @entities = @current_user.entities
-    @property = Property.new(property_params)
+    @property = current_user.properties.build(property_params)
 
     if @property.save
       redirect_to property_path(@property)
@@ -27,12 +23,9 @@ class PropertiesController < ApplicationController
   end
 
   def edit
-    @property = Property.find(params[:id])
-    @entities = @current_user.entities
   end
 
   def update
-    @property = Property.find(params[:id])
     @property.update(property_params)
     
     if @property.save
@@ -43,16 +36,17 @@ class PropertiesController < ApplicationController
   end
 
   def destroy
-    @property = Property.find(params[:id])
     @property.destroy
-    flash[:notice] = "Property Deleted"
     redirect_to user_path(@current_user)
   end
 
   private
 
   def property_params
-    params.require(:property).permit(:address, :city, :state, :zip, :county, :rent, :entity_id)
+    params.require(:property).permit(:address, :city, :state, :zip, :county, :rent, :landlord, :user_id)
   end
-
+  
+  def find_property
+    @property = Property.find(params[:id])
+  end
 end

@@ -50,6 +50,4 @@ ActiveRecord::Schema.define(version: 2020_06_25_185843) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "properties", "users"
-  add_foreign_key "tenants", "users"
 end

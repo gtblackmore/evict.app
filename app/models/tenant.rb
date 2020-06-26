@@ -11,4 +11,8 @@ class Tenant < ApplicationRecord
   def self.total_owed
     sum("outstanding_balance")
   end
+
+  def full_name
+    "#{self.first_name}" + " #{self.last_name}"
+  end
 end

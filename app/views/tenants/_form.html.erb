@@ -16,18 +16,19 @@
 <%= f.text_field :last_name %>
 
 <%= f.label :email %>
-<%= f.text_field :email %>
+<%= f.email_field :email %>
 
 <%= f.label :phone %>
-<%= f.text_field :phone %>
+<%= f.telephone_field :phone %>
 
 <%= f.label :outstanding_balance %>
-<%= f.text_field :outstanding_balance %>
+<%= f.text_field :outstanding_balance, value: 0, min: 0 %>
 
-<%= f.label :past_due %>
-<%= f.text_field :past_due %>
+<%= f.label :past_due, "Past Due?" %>
+<%= f.check_box :past_due %>
 
 <%= f.hidden_field :property_id, value: params[:property_id] %>
+<%= f.hidden_field :user_id, value: current_user.id %>
 
  
 <%= f.submit %>

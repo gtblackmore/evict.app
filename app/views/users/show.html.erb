@@ -1,10 +1,12 @@
 <h1><%= @current_user.first_name %> <%= @current_user.last_name %></h1>
-
-<p>You have <span class="delinquent"><%= @delinquent_tenants.count %></span> tenants that are delinquent. They are:</p>
-<% @delinquent_tenants.each do |tenant| %>
-<ul>
-  <li><%= tenant.first_name %> <%= tenant.last_name %></li>
-</ul>
+Your tenants owe you $<%= @current_user.tenants.total_owed %>
+<% if @current_user.tenants.delinquencies.any? %>
+  <h3>Delinquencies:<span class="delinquent">  <%= @current_user.tenants.delinquencies.count %></span></h3>
+  <% @current_user.tenants.delinquencies.each do |tenant| %>
+    <ul>
+      <li><%= link_to tenant.full_name, property_tenant_path(tenant.property_id, tenant) %> - <b>$<%= tenant.outstanding_balance %></b></li>
+    </ul>
+  <% end %>
 <% end %>
 
 
@@ -13,7 +15,7 @@
     <div class="prop_header">
       <h3>Properties</h3>
       <button class="crud"><%= link_to "Add New Property", new_property_path %></button>
-      <button class="crud"><%= link_to "Add New Tenant", tenant_path %></button>
+      
     </div>
     <table>    
     
@@ -23,28 +25,11 @@
           <span class="buttons-row">
             <button class="evict"><%= link_to "Start Eviction", user_path(current_user) %></button>
             <button class="crud"><%= link_to "Edit Property", edit_property_path(property) %></button>
-            <button class="crud"><%= link_to "Property Details", property_path(property) %></button></td>
-         </span>
+            <button class="crud"><%= link_to "Property Details", property_path(property) %></button>
+            <button class="crud"><%= link_to "Add New Tenant", new_property_tenant_path(property) %></button>
+          </span>
+        </td>
     <% end %>
       </tr>
     </table>
   </div>
-
-  <div class="entity_container">
-    <div class="entity_header">
-      <h3>Entities</h3>
-      <button class="crud"><%= link_to "Add New Entity", new_user_entity_path(@current_user.id) %></button>
-    </div>
-    <table>    
-    <% @current_user.entities.each do |entity| %>  
-      <tr>
-        <td class="row"><%= entity.legal_name %>
-          <span class="buttons-row">
-            <button class="crud"><%= link_to "Edit Entity", edit_entity_path(entity) %></button>
-            <button class="crud"><%= link_to "Entity Details", entity_path(entity) %></button></td>
-         </span>
-    <% end %>
-      </tr>
-    </table>
-  </div>
-</section>

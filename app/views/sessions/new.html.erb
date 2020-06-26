@@ -1,8 +1,18 @@
 <%= form_tag(sessions_path) do %>
+  <% if flash.any? %>
+    <div id="error_explanation">
+       <h2>There were some errors:</h2>
+       <ul>
+       <% flash.each do |type, message| %>
+         <li><%= message %></li>
+       <% end %>
+      </ul>
+  </div>
+  <% end %>
   <%= label_tag :email %>
   <%= text_field_tag :email %>
   <%= label_tag :password %>
   <%= password_field_tag :password %>
   <%= submit_tag("Login") %>
 <% end %>
-<%= link_to('Log in with Facebook!', '/auth/facebook') %>
+<%= link_to('Log in with GitHub!', '/auth/github') %>

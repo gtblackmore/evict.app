@@ -1,10 +1,13 @@
-<h1><%= @tenant.first_name %> <%= @tenant.last_name %></h1>
+<h1><%= @tenant.full_name %></h1>
 
 <%= @tenant.email %>
 <%= @tenant.phone %>
-<%= @tenant.outstanding_balance %>
-<%= @tenant.past_due %>
-<%= @tenant.property_id %>
+<% if @tenant.past_due %>
+  <p>This tenant owes $<%= @tenant.outstanding_balance %></p>
+<% end %>
+
+<%= link_to @tenant.property.mailing_address, property_path(@tenant.property) %>
 
 <%= button_to "Delete Tenant", tenant_path(@tenant), method: :delete %>
-<button class="crud"><%= link_to "Edit Tenant", edit_tenant_path(@tenant) %></button>
+<button class="crud"><%= link_to "Edit Tenant", edit_property_tenant_path(@tenant.property) %></button>
+<button class="evict"><%= link_to "Start Eviction", user_path(current_user) %></button>
