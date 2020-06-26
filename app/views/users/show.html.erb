@@ -23,7 +23,7 @@ Your tenants owe you $<%= @current_user.tenants.total_owed %>
       <tr>
         <td class="row"><%= property.address %>, <%= property.city %>, <%= property.state %>, <%= property.zip %>
           <span class="buttons-row">
-            <button class="evict"><%= link_to "Start Eviction", user_path(current_user) %></button>
+            
             <button class="crud"><%= link_to "Edit Property", edit_property_path(property) %></button>
             <button class="crud"><%= link_to "Property Details", property_path(property) %></button>
             <button class="crud"><%= link_to "Add New Tenant", new_property_tenant_path(property) %></button>

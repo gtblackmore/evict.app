@@ -1,0 +1,29 @@
+<%= form_with model: @eviction, local: true do |f| %>
+  <% if @eviction.errors.any? %>
+  <div id="error_explanation">
+     <h2>There were some errors:</h2>
+     <ul>
+      <% @eviction.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+  </div>
+<% end %>
+
+<%= f.label :notice_date, "Notice Date" %>
+<%= f.date_field :notice_date %>
+
+<%= f.label :outstanding_balance %>
+<%= f.text_field :outstanding_balance %>
+
+<%= f.label :property %>
+<%= f.collection_select :property_id, Property.where(user_id: current_user.id), :id, :mailing_address %>
+
+<%= f.label :attorney %>
+<%= f.collection_select :attorney_id, Attorney.all, :id, :full_name %>
+
+
+ 
+<%= f.submit %>
+
+<% end %>

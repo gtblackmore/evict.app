@@ -10,4 +10,4 @@
 
 <%= button_to "Delete Tenant", tenant_path(@tenant), method: :delete %>
 <button class="crud"><%= link_to "Edit Tenant", edit_property_tenant_path(@tenant.property) %></button>
-<button class="evict"><%= link_to "Start Eviction", user_path(current_user) %></button>
+<button class="evict"><%= link_to "Start Eviction", new_eviction_path %></button>

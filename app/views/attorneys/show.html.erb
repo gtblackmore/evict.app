@@ -1,0 +1,12 @@
+<h1><%= @attorney.full_name %></h1>
+
+  <p>Firm: <%= @attorney.firm %></p>
+  <p>Fee: <%= @attorney.fee %></p>
+ 
+  <p>Evictions:</p>
+  <% @attorney.evictions.each do |eviction| %>
+  <ul>
+    <li><%= eviction.property.mailing_address %></li>  
+  </ul>
+  <% end %>
+  

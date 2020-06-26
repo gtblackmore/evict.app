@@ -10,7 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_25_185843) do
+ActiveRecord::Schema.define(version: 2020_06_26_052652) do
+
+  create_table "attorneys", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.string "phone"
+    t.string "firm"
+    t.string "fee"
+  end
+
+  create_table "evictions", force: :cascade do |t|
+    t.integer "outstanding_balance"
+    t.string "notice_date"
+    t.integer "property_id"
+    t.integer "attorney_id"
+    t.index ["attorney_id"], name: "index_evictions_on_attorney_id"
+    t.index ["property_id"], name: "index_evictions_on_property_id"
+  end
 
   create_table "properties", force: :cascade do |t|
     t.string "address"

@@ -1,0 +1,11 @@
+<p>Property: <%= @eviction.property.mailing_address %></p>
+<p>Notice Date: <%= @eviction.notice_date %></p>
+<p>Attorney: <%= @eviction.attorney.full_name %></p>
+<p>Tenants:</p>
+<% @eviction.property.tenants.each do |tenant| %>
+<ul>
+  <li>Name: <%= tenant.full_name %></li>
+  <li>Balance: $<%= tenant.outstanding_balance %></li>
+</ul>
+<% end %>
+

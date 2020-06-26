@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :users
+  resources :attorneys
+  resources :evictions
   resources :tenants, only: [:index, :destroy]
   resources :properties do
     resources :tenants, only: [:new, :edit, :update, :create, :show]

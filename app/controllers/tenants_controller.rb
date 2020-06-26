@@ -42,7 +42,6 @@ class TenantsController < ApplicationController
 
   def destroy
     @tenant.destroy
-    flash[:notice] = "Tenant Deleted"
     redirect_to user_path(@current_user)
   end
 
