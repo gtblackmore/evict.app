@@ -1,7 +1,7 @@
 class Property < ApplicationRecord
   belongs_to :user
   has_many :tenants, dependent: :destroy
-  has_many :evictions, through: :properties
+  has_many :evictions
   validates :address, :city, :state, :zip, :county, :landlord, presence: true
  
   def occupied?

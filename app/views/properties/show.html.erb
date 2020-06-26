@@ -7,7 +7,7 @@
   <% @property.tenants.each do |tenant| %>
   <ul>
     <li><%= link_to tenant.full_name, property_tenant_path(@property, tenant) %></li>
-    <button><%= link_to "See Pending Evictions", property_tenant_evictions_path(@property, tenant) %></button>
+ 
   </ul>
   <% end %>
 
@@ -15,5 +15,6 @@
   <%= button_to "Delete Property", property_path(@property), method: :delete %>
   <button class="crud"><%= link_to "Edit Property", edit_property_path(@property) %></button>
   <button class="crud"><%= link_to "Add Tenant", new_property_tenant_path(@property) %></button>
-  <button class="evict"><%= link_to "Start Eviction", user_path(current_user) %></button>
+  <button class="evict"><%= link_to "Start Eviction", new_eviction_path %></button>
+  <button><%= link_to "See Pending Evictions", evictions_path %></button>
   

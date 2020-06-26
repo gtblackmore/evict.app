@@ -3,6 +3,7 @@ class EvictionsController < ApplicationController
 
   def index
     @evictions = Eviction.all
+    
   end
 
   def show
@@ -39,7 +40,7 @@ class EvictionsController < ApplicationController
   end
 
   def destroy
-    @tenant.destroy
+    @eviction.destroy
     redirect_to user_path(@current_user)
   end
 

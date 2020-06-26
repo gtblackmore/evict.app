@@ -15,7 +15,7 @@ Your tenants owe you $<%= @current_user.tenants.total_owed %>
     <div class="prop_header">
       <h3>Properties</h3>
       <button class="crud"><%= link_to "Add New Property", new_property_path %></button>
-      
+      <button><%= link_to "See Pending Evictions", evictions_path %></button>
     </div>
     <table>    
     
